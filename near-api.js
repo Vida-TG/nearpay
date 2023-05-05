@@ -17,9 +17,6 @@ export async function initContract() {
 
   // Initializing our contract APIs by contract name and configuration
   window.contract = await new Contract(window.walletConnection.account(), nearConfig.contractName, {
-    // View methods are read only. They don't modify the state, but usually return some value.
-    viewMethods: ['get_greeting'],
-    // Change methods can modify the state. But you don't receive the returned value when called.
     changeMethods: ['set_greeting'],
   });
 }
@@ -43,9 +40,4 @@ export async function setGreetingOnContract(message) {
     args: { message: message }
   });
   return response;
-}
-
-export async function getGreetingFromContract() {
-  let greeting = await window.contract.get_greeting();
-  return greeting;
 }

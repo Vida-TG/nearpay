@@ -3,42 +3,36 @@ import React from 'react';
 
 import './assets/global.css';
 
-import { getGreetingFromContract, setGreetingOnContract } from './near-api';
 import { EducationalText, SignInPrompt, SignOutButton } from './ui-components';
 
 
 export default function App() {
-  const [valueFromBlockchain, setValueFromBlockchain] = React.useState();
+  const [priceInput, setPriceInput] = React.useState(0);
 
   const [uiPleaseWait, setUiPleaseWait] = React.useState(true);
 
   // Get blockchian state once on component load
   React.useEffect(() => {
-    getGreetingFromContract()
-      .then(setValueFromBlockchain)
-      .catch(alert)
-      .finally(() => {
-        setUiPleaseWait(false);
-      });
+      console.log("LOADED")
+  
   }, []);
 
   /// If user not signed-in with wallet - show prompt
   if (!window.walletConnection.isSignedIn()) {
     // Sign-in flow will reload the page later
-    return <SignInPrompt greeting={valueFromBlockchain}/>;
+    return <SignInPrompt/>;
   }
 
-  function changeGreeting(e) {
+  async function generateQR(e) {
     e.preventDefault();
     setUiPleaseWait(true);
-    const { greetingInput } = e.target.elements;
-    setGreetingOnContract(greetingInput.value)
-      .then(getGreetingFromContract)
-      .then(setValueFromBlockchain)
-      .catch(alert)
-      .finally(() => {
-        setUiPleaseWait(false);
-      });
+    let code = await console.log("MOUNT QR CODE");
+    code ? console.log("ERROR") : console.log("Mounted");
+    setUiPleaseWait(false);
+  }
+
+  function updatePriceInput(e) {
+    setPriceInput(e.target.value)
   }
 
   return (
@@ -48,18 +42,15 @@ export default function App() {
         <h1>
           Np
         </h1>
-        <form onSubmit={changeGreeting} className="change">
-          <label>Change greeting:</label>
+        <form onSubmit={generateQR} className="">
+          <label>Set price:</label>
           <div>
             <input
               autoComplete="off"
-              defaultValue={valueFromBlockchain}
-              id="greetingInput"
+              onChange={updatePriceInput}
+              value={priceInput}
             />
-            <button>
-              <span>Save</span>
-              <div className="loader"></div>
-            </button>
+            <input type='submit' value='Submit'/>
           </div>
         </form>
         <EducationalText/>

@@ -1,18 +1,18 @@
 import { signInWithNearWallet, signOutNearWallet } from './near-api';
 import React from 'react';
 
-export function SignInPrompt({greeting}) {
+export function SignInPrompt() {
   return (
     <main>
       <h1>
-        The contract says: <span className="greeting">{greeting}</span>
+        <span className="greeting">Nearpay</span>
       </h1>
       <h3>
-        Welcome to NEAR!
+        Welcome to NEARPAY!
       </h3>
       <p>
-        Your contract is storing a greeting message in the NEAR blockchain. To
-        change it you need to sign in using the NEAR Wallet. It is very simple,
+        Nearpay allows swift payment via the Near blockchain. You need
+        to sign in using the NEAR Wallet. It is very simple,
         just use the button below.
       </p>
       <p>
@@ -30,7 +30,7 @@ export function SignInPrompt({greeting}) {
 
 export function SignOutButton({accountId}) {
   return (
-    <button style={{ float: 'right' }} onClick={signOutNearWallet}>
+    <button style={{ float: 'right', padding: '15px' }} onClick={signOutNearWallet}>
       Sign out {accountId}
     </button>
   );
@@ -52,7 +52,7 @@ export function EducationalText() {
       </ol>
       <hr />
       <p>
-        Generate Now <a target="_blank" rel="noreferrer" href="https://docs.near.org">the NEAR docs</a> or look through some <a target="_blank" rel="noreferrer" href="https://examples.near.org">example apps</a>.
+        Generate Now <a>GENERATE</a>.
       </p>
     </>
   );
