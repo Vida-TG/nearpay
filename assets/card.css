@@ -1,3 +1,29 @@
+@media screen and (max-width: 750px){
+    .full-card {
+        width: 345px !important;
+        height: 750px !important;
+        box-shadow: 0px 0px 10px #222 !important;
+        border-radius: 30px !important;
+        margin: 30px auto !important;
+    }
+    
+    .card-header {
+        font-size: large !important;
+        font-weight: 650 !important;
+        padding: 30px 10px !important;
+    }
+
+    .switch {
+        width: 100px !important;
+        height: 40px !important;
+    }
+    
+    .card-body {
+        font-size: large !important;
+        padding: 5px 25px;
+    }
+}
+
 .full-card {
     width: 600px;
     height: 700px;
