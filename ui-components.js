@@ -40,7 +40,7 @@ export function EducationalText() {
   return (
     <>
       <p>
-        EDDDDDDDDDDDDDDDDDDDD
+        ED
       </p>
       <ol>
         <li>
