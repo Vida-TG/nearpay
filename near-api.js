@@ -17,7 +17,8 @@ export async function initContract() {
 
   // Initializing our contract APIs by contract name and configuration
   window.contract = await new Contract(window.walletConnection.account(), nearConfig.contractName, {
-    changeMethods: ['set_greeting'],
+    viewMethods: [],
+    changeMethods: [],
   });
 }
 
@@ -32,12 +33,6 @@ export function signInWithNearWallet() {
   // user's behalf.
   // This works by creating a new access key for the user's account and storing
   // the private key in localStorage.
-  window.walletConnection.requestSignIn(nearConfig.contractName);
+  window.walletConnection.requestSignIn('');
 }
 
-export async function setGreetingOnContract(message) {
-  let response = await window.contract.set_greeting({
-    args: { message: message }
-  });
-  return response;
-}

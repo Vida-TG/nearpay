@@ -7,9 +7,6 @@ export function SignInPrompt() {
       <h1>
         <span className="greeting">Nearpay</span>
       </h1>
-      <h3>
-        Welcome to NEARPAY!
-      </h3>
       <p>
         Nearpay allows swift payment via the Near blockchain. You need
         to sign in using the NEAR Wallet. It is very simple,
