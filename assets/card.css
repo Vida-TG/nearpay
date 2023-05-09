@@ -1,0 +1,32 @@
+.full-card {
+    width: 600px;
+    height: 700px;
+    background-color: rgb(243, 241, 241);
+    box-shadow: 0px 0px 20px #222;
+    border-radius: 55px;
+    margin: 120px auto;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-around;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    font-weight: 530;
+    padding: 45px 10px;
+}
+
+.switch {
+    width: 200px;
+    height: 60px;
+    text-align: center;
+}
+.switch:hover {
+    cursor: pointer;
+}
+
+.card-body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    padding: 5px 35px;
+}
