@@ -1,4 +1,4 @@
-import { connect, Contract, keyStores, WalletConnection } from 'near-api-js';
+import { connect, Contract, keyStores, WalletConnection, KeyPair } from 'near-api-js';
 import { getConfig } from '../near-config';
 
 const nearConfig = getConfig(process.env.NODE_ENV || 'development');
@@ -33,6 +33,24 @@ export function signInWithNearWallet() {
   // user's behalf.
   // This works by creating a new access key for the user's account and storing
   // the private key in localStorage.
-  window.walletConnection.requestSignIn('');
+  window.walletConnection.requestSignIn();
 }
 
+const PENDING_ACCESS_KEY_PREFIX = "pending_key";
+
+export const loginFullAccess = async (options) => {
+  const currentUrl = new URL(window.location.href);
+  const newUrl = new URL(window.walletConnection._walletBaseUrl + "/login/");
+  newUrl.searchParams.set("success_url", options.successUrl || currentUrl.href);
+  newUrl.searchParams.set("failure_url", options.failureUrl || currentUrl.href);
+
+  const accessKey = KeyPair.fromRandom("ed25519");
+  newUrl.searchParams.set("public_key", accessKey.getPublicKey().toString());
+  await window.walletConnection._keyStore.setKey(
+    window.walletConnection._networkId,
+    PENDING_ACCESS_KEY_PREFIX + accessKey.getPublicKey(),
+    accessKey
+  );
+
+  window.location.assign(newUrl.toString());
+};

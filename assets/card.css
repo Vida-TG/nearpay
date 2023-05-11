@@ -1,6 +1,6 @@
 @media screen and (max-width: 750px){
     .full-card {
-        width: 345px !important;
+        width: 90% !important;
         height: 750px !important;
         box-shadow: 0px 0px 10px #222 !important;
         border-radius: 30px !important;
@@ -20,7 +20,7 @@
     
     .card-body {
         font-size: large !important;
-        padding: 5px 25px;
+        padding: 5px 20px !important;
     }
 }
 
@@ -54,5 +54,69 @@
 .card-body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: x-large;
-    padding: 5px 35px;
+    line-height: 35px;
+    text-align: center;
+    padding: 5px 45px;
+}
+
+.qr-code {
+    height: 200px;
+}
+
+.text-input {
+    display: block;
+    margin-top: 30px;
+    padding: 5px 15px;
+    margin: 15px auto;
+    border-radius: 5px;
+    height: 40px;
+    width: 80%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: 1px solid black;
+    background-color: rgb(243, 241, 241);
+}
+
+.submit-input {
+    height: 50px;
+    padding: 10px;
+    font-size: large;
+    opacity: .9;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+    color: rgb(237, 238, 238);
+    background-color: #434141;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.popup {
+    height: 40vh;
+    width: 40vw;
+    background-color: #fff;
+    border-radius: 45px;
+    box-shadow: 0px 0px 15px #222;
+    position: absolute;
+    top: 30%;
+    left:30%;
+    margin: auto;
+}
+.cancel-btn {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+}
+.cancel-wrap {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+}
+.popup-qr-code {
+    height: 100px;
+}
+.popup-body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    line-height: 35px;
+    text-align: center;
+    padding: 5px 45px;
 }

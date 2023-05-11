@@ -1,0 +1,23 @@
+@media screen and (max-width: 750px){
+    .login-toggle {
+        margin: 20px 5% !important;
+    }
+}
+
+.header {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.login-toggle {
+    font-size: medium;
+    margin: 20px;
+    height: 40px;
+    width: 250px;
+    font-weight: bold;
+    border: 0px;
+    border-radius: 6px;
+    box-shadow: 0px 0px 5px #080808;
+}
