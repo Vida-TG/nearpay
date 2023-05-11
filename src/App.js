@@ -6,8 +6,6 @@ import Footer from './Components/Footer';
 import '../assets/global.css';
 import Card from './Components/Card'
 
-import { EducationalText, SignInPrompt, SignOutButton } from './ui-components';
-
 
 export default function App() {
   return (

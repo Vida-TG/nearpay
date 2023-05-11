@@ -4,7 +4,7 @@
         height: 750px !important;
         box-shadow: 0px 0px 10px #222 !important;
         border-radius: 30px !important;
-        margin: 30px auto !important;
+        margin: 30px auto 0px auto !important;
     }
     
     .card-header {
@@ -121,13 +121,13 @@ section {
 }
 
 .popup {
-    height: 40vh;
+    height: 60vh;
     width: 40vw;
     background-color: #fff;
     border-radius: 45px;
     box-shadow: 0px 0px 15px #222;
     position: absolute;
-    top: 30%;
+    top: 20%;
     left:30%;
     margin: auto;
 }
