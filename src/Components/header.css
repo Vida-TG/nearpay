@@ -11,6 +11,15 @@
     justify-content: flex-end;
 }
 
+.title {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0px;
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family:'Courier New', Courier, monospace;
+}
+
 .login-toggle {
     background-color: #fff;
     font-size: medium;
