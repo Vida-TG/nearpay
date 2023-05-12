@@ -1,18 +1,22 @@
 import 'regenerator-runtime/runtime';
-import React from 'react';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import '../assets/global.css';
-import Card from './Components/Card'
+
+// pages
+import Scan from "./Pages/Scan"
+import Home from "./Pages/Home"
+import Send from "./Pages/Send"
 
 
 export default function App() {
   return (
-    <>
-      <Header />
-      <Card className="card" />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/scan" element={<Scan />} />
+        <Route path="/:accountId" element={<Send />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
