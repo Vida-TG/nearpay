@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../../assets/card.css';
 import cancel from '../../assets/cancel.png'
 import giphy from './watching-eyes.gif'
+import QRCode from 'qrcode';
+import {saveAs} from "file-saver";
 
 
 export default function Card() {
@@ -9,6 +11,8 @@ export default function Card() {
     const [ switch1, setSwitch1 ] = React.useState(true);
     const [ switch2, setSwitch2 ] = React.useState(false);
     const [ popupState, setPopupState ] = React.useState(false);
+    const [ url, setUrl ] = React.useState(window.accountId)
+    const [ qr, setQr ] = React.useState(window.accountId)
 
     function turnOn1(){
         setSwitch2(false);
@@ -27,6 +31,35 @@ export default function Card() {
     function closePopup(){
         setPopupState(false);
     }
+
+    function handleDownload() {
+        saveAs(qr, "saveeeee.png")
+    }
+    
+    useEffect(() => {
+        const GenerateQRCode = () => {
+            console.log(qr)
+            QRCode.toDataURL(
+                url,
+                {
+                    width: 800,
+                    margin: 2,
+                    color: {
+                        dark: "#000",
+                        light: "#fff",
+                    },
+                },
+                (err, url) => {
+                    if (err) return console.log(err)
+                    console.log(url)
+                    setQr(url)
+                }
+            );
+        };
+
+        GenerateQRCode();
+
+    }, [])
 
     return (
         <>
@@ -52,7 +85,16 @@ export default function Card() {
                         <div  className='card-body'>
                             <div style={ switch1 ? { display : 'block' } : { display : 'none' }}>
                                 <div>Generate and share QR code to receive payment in Near tokens</div>
-                                <div className="qr-code"></div>
+                                <div className='qr'>
+                                    {qr && (
+                                        <>
+                                            <img src={qr} className='' />
+                                            <button onClick={handleDownload}>
+                                                Download
+                                            </button>
+                                        </>
+                                    )}
+                                </div>
                                 <div>
                                     <input className="text-input amount" placeholder="Amount"/>
                                     <input className="text-input item" placeholder="Reason (or item)"/>

@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /.parcel-cache
+formzz.js
 
 # dependencies
 /node_modules

@@ -4,6 +4,7 @@ import cancel from '../../assets/cancel.png'
 import giphy from '../Components/watching-eyes.gif'
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
+
 import './send.css'
 
 const Send = () => {
