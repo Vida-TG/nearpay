@@ -28,6 +28,7 @@
     font-weight: bold;
     text-align: center;
     padding: 50px 40px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .send-submit {
