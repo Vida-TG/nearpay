@@ -1,0 +1,43 @@
+@media screen and (max-width: 750px){
+    .send-card {
+        width: 90% !important;
+        height: 60vh !important;
+        box-shadow: 0px 0px 10px #222 !important;
+        border-radius: 30px !important;
+        margin: 30px auto 0px auto !important;
+        font-size: x-large !important;
+    }
+
+}
+
+.send-card {
+    width: 600px;
+    height: 60vh;
+    background-color: #fff;
+    box-shadow: 0px 0px 20px #222;
+    border-radius: 55px;
+    margin: 40px auto 30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.send-card-body {
+    font-size: xx-large;
+    line-height: 50px;
+    font-weight: bold;
+    text-align: center;
+    padding: 50px 40px;
+}
+
+.send-submit {
+    display: block;
+    margin-top: 30%;
+    width: 150px;
+}
+
+.btn-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import { useParams, useSearchParams } from 'react-router-dom/dist';
+import React, { useEffect, useState } from 'react'
+import { useParams, useSearchParams, useNavigate } from 'react-router-dom/dist';
 import cancel from '../../assets/cancel.png'
 import giphy from '../Components/watching-eyes.gif'
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
+import './send.css'
 
 const Send = () => {
     const [searchParams] = useSearchParams();
@@ -11,10 +12,17 @@ const Send = () => {
     const [amt, setAmt] = useState(searchParams.get("amt") || null);
     const [item, setItem] = useState(searchParams.get("item") || null);
     const [ popupState, setPopupState ] = React.useState(false);
+    const navigate = useNavigate()
 
     function handleSend() {
         console.log(amt, item)
     }
+
+    useEffect(() => {
+        if (!accountId) {
+            navigate('/')
+        }
+    }, [])
 
     return (
         <>
@@ -29,16 +37,28 @@ const Send = () => {
                 
                 :
                 <section>
-                    <div className="full-card send-card" style={ popupState ? { opacity : '.1' } : { opacity : '1' }}>
-                        <div className='card-body'>
+                    <div className="send-card full-card" style={ popupState ? { opacity : '.1' } : { opacity : '1' }}>
+                        <div className='send-card-body'>
                             <div style={ { display : 'block' } }>
-                                <div>
-                                    You are sending {amt}N to {accountId} for {item}
+                                { amt == null ?
+                                <div> 
+                                    <div>
+                                        You are about to send Near to {accountId} { item ? <span> for {item}</span> : "" }
+                                    </div>
+                                    <div>
+                                        <input className="text-input amount" placeholder="Amount"/>
+                                        <div className='btn-wrap'><button className="send-submit submit-input" onClick={handleSend}>Generate code</button></div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <input className="text-input amount" placeholder="Amount"/>
-                                    <button className="submit-input" onClick={handleSend}>Generate code</button>
-                                </div>
+                                :
+                                    <div>
+                                        <div>
+                                            You are about to send {amt}N to {accountId} { item ? <span> for {item}</span> : "" }
+                                            <div className='btn-wrap'><button className="send-submit submit-input" onClick={handleSend}>Continue</button></div>
+                                        </div>
+                                    </div>
+                                }
+
                             </div>
                         </div>
                     </div>
