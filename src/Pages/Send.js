@@ -15,8 +15,9 @@ const Send = () => {
     const [ popupState, setPopupState ] = React.useState(false);
     const navigate = useNavigate()
 
-    function handleSend() {
-        console.log(amt, item)
+    async function handleSend() {
+        let getState = await window.account.state();
+        console.log(getState.amount)
     }
 
     useEffect(() => {

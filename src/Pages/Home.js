@@ -8,10 +8,9 @@ import Card from '../Components/Card'
 
 export default function Home() {
   return (
-    <>
+    <div className="home">
       <Header />
       <Card className="card" />
-      <Footer />
-    </>
+    </div>
   )
 }

@@ -36,3 +36,18 @@
 .login-white {
     background-color: white;
 }
+
+.scan-link-div {
+    width: 100%;
+    text-align: center;
+}
+
+.scan-link {
+    text-decoration: none;
+    font-size: large;
+    color: #000;
+}
+
+.scan-link:hover {
+    border-bottom: 2px solid black;
+}
