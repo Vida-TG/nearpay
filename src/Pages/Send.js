@@ -5,6 +5,7 @@ import giphy from '../Components/watching-eyes.gif'
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 
+
 import './send.css'
 
 const Send = () => {
@@ -13,11 +14,23 @@ const Send = () => {
     const [amt, setAmt] = useState(searchParams.get("amt") || null);
     const [item, setItem] = useState(searchParams.get("item") || null);
     const [ popupState, setPopupState ] = React.useState(false);
+    const [ acctBalance, setAcctBalance ] = React.useState()
     const navigate = useNavigate()
 
+
     async function handleSend() {
-        let getState = await window.account.state();
-        console.log(getState.amount)
+        let getState = await window.account.state()
+        let getAmount = await window.utils.format.formatNearAmount(getState.amount)
+        
+        if(Number(getAmount) > Number(amt)) {
+            await window.account.sendMoney(accountId, window.utils.format.parseNearAmount(amt))
+            .then(
+                console.log("sENT")
+            )
+        } else {
+            console.log("Insufficient funds")
+        }
+
     }
 
     useEffect(() => {

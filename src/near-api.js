@@ -1,4 +1,4 @@
-import { connect, Contract, keyStores, WalletConnection, KeyPair } from 'near-api-js';
+import { connect, Contract, keyStores, WalletConnection, KeyPair, Account, utils } from 'near-api-js';
 import { getConfig } from '../near-config';
 
 const nearConfig = getConfig(process.env.NODE_ENV || 'development');
@@ -14,6 +14,8 @@ export async function initContract() {
 
   // Getting the Account ID. If still unauthorized, it's just empty string
   window.accountId = window.walletConnection.getAccountId();
+  window.account = new Account(near.connection, accountId);
+  window.utils = utils;
 
   // Initializing our contract APIs by contract name and configuration
   window.contract = await new Contract(window.walletConnection.account(), nearConfig.contractName, {
