@@ -4,6 +4,7 @@ export function getConfig(env) {
   switch (env) {
 
     case 'production':
+    case 'development':
     case 'testnet':
       return {
         networkId: 'testnet',
