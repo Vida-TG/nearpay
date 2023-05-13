@@ -7,6 +7,9 @@
         margin: 30px auto 0px auto !important;
         font-size: x-large !important;
     }
+    .status {
+        width: 80% !important;
+    }
 
 }
 
@@ -41,4 +44,14 @@
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.status {
+    font-size: xx-large !important;
+    text-align: center !important;
+    height: 400px !important;
+    width: 50%;
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
 }
