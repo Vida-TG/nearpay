@@ -1,0 +1,8 @@
+{
+    "routes": [
+        {"src": "/", "dest":"/"},
+        {"src": "/scan", "dest":"/"},
+        {"src": "/send", "dest":"/"},
+        {"src": "/pdf", "dest":"/"}
+    ]
+}
