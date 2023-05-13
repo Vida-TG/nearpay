@@ -11,8 +11,11 @@ export default function Card() {
     const [ switch1, setSwitch1 ] = React.useState(true);
     const [ switch2, setSwitch2 ] = React.useState(false);
     const [ popupState, setPopupState ] = React.useState(false);
-    const [ url, setUrl ] = React.useState(window.accountId)
-    const [ qr, setQr ] = React.useState(window.accountId)
+    const [ url, setUrl ] = React.useState(window.location.href + "send?accountId=" + window.accountId)
+    const [ qr, setQr ] = React.useState("")
+
+    const [amt, setAmt] = React.useState("");
+    const [item, setItem] = React.useState("");
 
     function turnOn1(){
         setSwitch2(false);
@@ -32,17 +35,40 @@ export default function Card() {
         setPopupState(false);
     }
 
+    function amtChange(e){
+        setAmt(e.target.value)
+    }
+    function itemChange(e){
+        setItem(e.target.value)
+    }
+
     function handleDownload() {
-        saveAs(qr, "saveeeee.png")
+        saveAs(qr, accountId+item+amt + ".png")
     }
     
+    function generateModifiedQR() {
+        if (!amt && !item) {
+            return
+        } else if (amt && item) {
+            setUrl(window.location.href + "send?accountId=" + window.accountId + "&item=" + item + "&amt=" + amt)
+            generateCode();
+            return
+        } else if (amt) {
+            setUrl(window.location.href + "send?accountId=" + window.accountId + "&amt=" + amt)
+            return
+        } else {
+            setUrl(window.location.href + "send?accountId=" + window.accountId + "&item=" + item)
+            return
+        }
+    }
+
     useEffect(() => {
+        
         const GenerateQRCode = () => {
-            console.log(qr)
             QRCode.toDataURL(
                 url,
                 {
-                    width: 800,
+                    width: 300,
                     margin: 2,
                     color: {
                         dark: "#000",
@@ -51,12 +77,11 @@ export default function Card() {
                 },
                 (err, url) => {
                     if (err) return console.log(err)
-                    console.log(url)
                     setQr(url)
                 }
             );
         };
-
+        
         GenerateQRCode();
 
     }, [])
@@ -88,16 +113,18 @@ export default function Card() {
                                 <div className='qr'>
                                     {qr && (
                                         <>
-                                            <img src={qr} className='' />
-                                            <button onClick={handleDownload}>
+                                            <img src={qr} className='qr-image' />
+                                            <div className='download-btn-div'>
+                                            <button onClick={handleDownload} className='download-btn'>
                                                 Download
                                             </button>
+                                            </div>
                                         </>
                                     )}
                                 </div>
                                 <div>
-                                    <input className="text-input amount" placeholder="Amount"/>
-                                    <input className="text-input item" placeholder="Reason (or item)"/>
+                                    <input className="text-input amount" placeholder="Amount" onChange={amtChange} value={amt}/>
+                                    <input className="text-input item" placeholder="Reason (or item)" onChange={itemChange} value={item}/>
                                     <button className="submit-input" onClick={generateCode}>Generate code</button>
                                 </div>
                             </div>

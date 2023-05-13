@@ -160,5 +160,23 @@ section {
 }
 
 .qr {
-    padding: 15px;
+    padding: 15px 0px;
+}
+
+.qr-image {
+    height: 150px;
+    width: 150px;
+}
+
+.download-btn-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.download-btn {
+    display:block;
+    padding: 7px 15px;
+    background-color: #fff;
+    box-shadow: 0px 0px 3px black;
 }

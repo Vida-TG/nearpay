@@ -1,7 +1,7 @@
 @media screen and (max-width: 750px){
     .send-card {
         width: 90% !important;
-        height: 60vh !important;
+        height: 75vh !important;
         box-shadow: 0px 0px 10px #222 !important;
         border-radius: 30px !important;
         margin: 30px auto 0px auto !important;
