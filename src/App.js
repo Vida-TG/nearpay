@@ -7,6 +7,7 @@ import '../assets/global.css';
 import Scan from "./Pages/Scan"
 import Home from "./Pages/Home"
 import Send from "./Pages/Send"
+import DownloadPdf from "./Pages/DownloadPdf"
 
 
 export default function App() {
@@ -15,7 +16,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/scan" element={<Scan />} />
-        <Route path="/:accountId" element={<Send />} />
+        <Route path="/send" element={<Send />} />
+        <Route path="/pdf" element={<DownloadPdf />} />
       </Routes>
     </BrowserRouter>
   )
