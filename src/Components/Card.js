@@ -17,6 +17,25 @@ export default function Card() {
     const [amt, setAmt] = React.useState("");
     const [item, setItem] = React.useState("");
 
+    
+    const GenerateQRCode = () => {
+        QRCode.toDataURL(
+            url,
+            {
+                width: 300,
+                margin: 2,
+                color: {
+                    dark: "#000",
+                    light: "#fff",
+                },
+            },
+            (err, url) => {
+                if (err) return console.log(err)
+                setQr(url)
+            }
+        );
+    };
+
     function turnOn1(){
         setSwitch2(false);
         setSwitch1(true);
@@ -37,9 +56,11 @@ export default function Card() {
 
     function amtChange(e){
         setAmt(e.target.value)
+        generateModifiedQR()
     }
     function itemChange(e){
         setItem(e.target.value)
+        generateModifiedQR()
     }
 
     function handleDownload() {
@@ -51,37 +72,20 @@ export default function Card() {
             return
         } else if (amt && item) {
             setUrl(window.location.href + "send?accountId=" + window.accountId + "&item=" + item + "&amt=" + amt)
-            generateCode();
+            GenerateQRCode();
             return
         } else if (amt) {
             setUrl(window.location.href + "send?accountId=" + window.accountId + "&amt=" + amt)
+            GenerateQRCode()
             return
         } else {
             setUrl(window.location.href + "send?accountId=" + window.accountId + "&item=" + item)
+            GenerateQRCode()
             return
         }
     }
 
-    useEffect(() => {
-        
-        const GenerateQRCode = () => {
-            QRCode.toDataURL(
-                url,
-                {
-                    width: 300,
-                    margin: 2,
-                    color: {
-                        dark: "#000",
-                        light: "#fff",
-                    },
-                },
-                (err, url) => {
-                    if (err) return console.log(err)
-                    setQr(url)
-                }
-            );
-        };
-        
+    useEffect(() => { 
         GenerateQRCode();
 
     }, [])
@@ -136,8 +140,19 @@ export default function Card() {
                     <div className='popup'  style={ popupState ? { display : 'block' } : { display : 'none'}}>
                         <div className='cancel-wrap'><img src={cancel} onClick={closePopup} className='cancel-btn' /></div>
                         <div className='popup-body'>
-                            <div className='popup-qr-code'></div>
-                            <div>Share</div>
+                            <div className='popup-qr-code'>
+                                    {qr && (
+                                        <>
+                                            <img src={qr} className='popup-qr-image' />
+                                            <div className='popup-share-div'>
+                                                <button className='popup-share'>Share</button>
+                                                <button onClick={handleDownload} className='popup-share'>
+                                                    Download
+                                                </button>
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
                         </div>
                     </div>
                 </section>
