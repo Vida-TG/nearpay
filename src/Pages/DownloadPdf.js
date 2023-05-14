@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom/dist'
 
 const DownloadPdf = () => {
   return (
-    <Link to="../summary.pdf" download>Download summary</Link>
+    <Link to="../summary.pdf" download>Download pdf summary</Link>
   )
 }
 

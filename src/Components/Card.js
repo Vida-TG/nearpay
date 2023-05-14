@@ -36,6 +36,8 @@ export default function Card() {
         );
     };
 
+    //None
+    
     function turnOn1(){
         setSwitch2(false);
         setSwitch1(true);
